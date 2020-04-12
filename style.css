@@ -1,0 +1,24 @@
+* {
+    /* border: solid 1px black;
+    margin: 0px;
+    padding: 0px; */
+}
+
+header {
+    background-color: grey;
+    color: white;
+    font-size: xx-large;
+    text-align: center;
+}
+
+aside {
+    background-color: lightgrey;
+}
+
+.card {
+    background-color: blue;
+    color: white;
+    margin: 20px 5px 0px;
+}
+
+input {}
