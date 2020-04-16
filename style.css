@@ -21,4 +21,11 @@ aside {
     margin: 20px 5px 0px;
 }
 
-input {}
+#placeDate {
+    font-size: x-large;
+}
+
+#icon {
+    display: inline-block;
+    vertical-align: middle;
+}

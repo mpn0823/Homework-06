@@ -13,57 +13,39 @@
     <header class="column is-full">Weather Dashboard</header>
     <aside class="column is-one-fifth">
         <form>
-            <label for="name">Search for a City:</label>
-            <input class="input" type="text" name="name" id="name">
-        </form>
+            <div class="field">
+                <label class="label">Search for a City</label>
+                <div class="columns control">
+                    <input class="column is-9 input" type="text">
+                    <button class="column is-3 button is-primary">S</button>
+                </div>
+            </div>
+            <div class="columns is-vcentered is-multiline" id="history">
+
+            </div>
+        </form><br>
     </aside>
     <section class="column">
         <div class="box">
-            <p><b>Atlanta (12/12/2020)</b></p>
-            <p>Temperature: 100.1 °F</p>
-            <p>Humidity: 41%</p>
-            <p>Wind Speed: 4.7 MPH</p>
-            <p>UV Index: >9000</p>
+            <p><b><span id="placeDate"></span></b><img id="icon"></p>
+            <p>Temperature: <span id="temp"></span></p><br>
+            <p>Humidity: <span id="humidity"></span></p><br>
+            <p>Wind Speed: <span id="windSpd"></span></p><br>
+            <p>UV Index: <span id="uvIndex"></span></p><br>
         </div>
         <div class="">
-            <section class="columns is-multiline" style="justify-content: space-between;">
+            <!-------------------------------------------------move this to CSS-->
+            <section class="columns is-multiline" id="fiveDay" style="justify-content: space-between;">
                 <p class="column is-full"><b>5-Day Forecast</b></p>
-                <div class="card column is-2">
-                    <p><b>01/10/2020</b></p>
-                    <p>weather graphic</p>
-                    <p>Temp: 99.99 °F</p>
-                    <p>Humidity: 100%</p>
-                </div>
-                <div class="card column is-2">
-                    <p><b>01/10/2020</b></p>
-                    <p>weather graphic</p>
-                    <p>Temp: 99.99 °F</p>
-                    <p>Humidity: 100%</p>
-                </div>
-                <div class="card column is-2">
-                    <p><b>01/10/2020</b></p>
-                    <p>weather graphic</p>
-                    <p>Temp: 99.99 °F</p>
-                    <p>Humidity: 100%</p>
-                </div>
-                <div class="card column is-2">
-                    <p><b>01/10/2020</b></p>
-                    <p>weather graphic</p>
-                    <p>Temp: 99.99 °F</p>
-                    <p>Humidity: 100%</p>
-                </div>
-                <div class="card column is-2">
-                    <p><b>01/10/2020</b></p>
-                    <p>weather graphic</p>
-                    <p>Temp: 99.99 °F</p>
-                    <p>Humidity: 100%</p>
-                </div>
 
             </section>
         </div>
 
     </section>
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./script.js"></script>
 
 
 </body>
