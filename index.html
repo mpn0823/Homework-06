@@ -12,19 +12,16 @@
 <body class="columns is-multiline">
     <header class="column is-full">Weather Dashboard</header>
     <aside class="column is-one-fifth">
-        <form>
-            <div class="field">
-                <label class="label">Search for a City</label>
-                <div class="columns control">
-                    <input class="column is-9 input" type="text">
-                    <button class="column is-3 button is-primary">S</button>
-                </div>
-            </div>
-            <br>
-            <div class="columns is-vcentered is-multiline" id="history">
-
-            </div>
-        </form><br>
+        <div class="field is-grouped">
+            <p class="control is-expanded">
+                <input class="input" type="text">
+            </p>
+            <p class="control">
+                <a class="button is-info">
+                    <i class="fas fa-search"></i>
+                </a>
+            </p>
+        </div>
     </aside>
     <section class="column">
         <div class="box">
@@ -46,7 +43,7 @@
     <script src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="./script.js"></script>
+    <script src="./test.js"></script>
 
 
 </body>
