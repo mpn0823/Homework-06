@@ -6,6 +6,16 @@ const openWeatherKey = "f214e925612ff5d19b7d84595cd06955";
 const openWeatherURL = "https://api.openweathermap.org/data/2.5/onecall?";
 const iconURL = "http://openweathermap.org/img/wn/";
 
+
+async function foo(place) {
+    return $.ajax({
+        url: mapQeuestURL + $.param({ key: mapQuestKey, location: place, maxResults: 1 }),
+        method: "GET"
+    });
+}
+
+console.log(foo("Durham, NC"));
+
 // Displays weather data for given place on the page
 function displayWeatherData(place) {
     // Get geocoordinates
@@ -23,11 +33,9 @@ function displayWeatherData(place) {
             }),
             method: "GET"
         }).then(function(obj) {
-            console.log(obj);
             //display current weather to page
             $("#placeDate").text(place + " " + moment.unix(obj.current.dt).format("M/D/YYYY"));
             $("#icon").attr("src", iconURL + obj.current.weather[0].icon + ".png");
-            console.log()
             $("#temp").text(obj.current.temp + " °F");
             $("#humidity").text(obj.current.humidity + "%");
             $("#windSpd").text(obj.current.wind_speed + " MPH");
@@ -47,6 +55,9 @@ function displayWeatherData(place) {
         });
     });
 }
+
+
+
 
 // Displays card with given weather data to page.  Weather is given as object defined 
 // as {date: <date>, icon: <icon code>, temp: <value>, humidity: <value>}
