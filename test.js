@@ -75,27 +75,35 @@ const iconURL = "http://openweathermap.org/img/wn/";
         $("#history").empty()
         const history = JSON.parse(localStorage.getItem("history"));
         createEntry(place);
-        history.slice(0, 9).forEach(place => createEntry(place));
+        history.slice(0, 8).forEach(place => createEntry(place));
         localStorage.setItem("history", JSON.stringify([place].concat(history)));
     }
 
-    // Creates a single corresponding entry in the history section on the page
+    // Creates a single corresponding entry in the history section on the page.
     function createEntry(place) {
-        $("#history").append($("<button>").text(place).addClass("column is-12"));
+        const entry = $("<button>").text(place).addClass("column is-12");
+        entry.click(function() { getTheWeather($(this).text()) });
+        $("#history").append(entry);
     }
 
+    // For given place, queries and displays weather data to the page.
+    function getTheWeather(place) {
+        getGeocoordinates(place).then(coordinates => {
+            getWeatherData(coordinates).then(weatherData => {
+                renderWeatherData(weatherData, place);
+            });
+        });
+    }
     // Set up local storage history
     if (localStorage.getItem("history") === null) localStorage.setItem("history", "[]");
 
     // On form submission, run the queries and display results.
     $("form").submit(() => {
         const place = $("input").val();
-        getGeocoordinates(place).then(coordinates => {
-            getWeatherData(coordinates).then(weatherData => {
-                renderWeatherData(weatherData, place);
-            });
-        });
-        updateHistory(place);
+        if (place != "") {
+            getTheWeather(place);
+            updateHistory(place);
+        }
         $("input").val(""); //clear input field
         return false; //don't reload page
     });
