@@ -74,9 +74,12 @@ const iconURL = "http://openweathermap.org/img/wn/";
     function updateHistory(place) {
         $("#history").empty()
         const history = JSON.parse(localStorage.getItem("history"));
-        createEntry(place);
+        //check to see if place is already in history
+        if (history.filter(element => element === place).length === 0) {
+            createEntry(place);
+            localStorage.setItem("history", JSON.stringify([place].concat(history)));
+        }
         history.slice(0, 8).forEach(place => createEntry(place));
-        localStorage.setItem("history", JSON.stringify([place].concat(history)));
     }
 
     // Creates a single corresponding entry in the history section on the page.
