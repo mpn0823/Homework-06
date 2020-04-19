@@ -2,11 +2,27 @@
 
 const mapQuestKey = "uAwPs4gZNB3ofJNPyN7Z0k4A3KsXsKAZ";
 const mapQeuestURL = "http://www.mapquestapi.com/geocoding/v1/address?";
+const predictionURL = "http://www.mapquestapi.com/search/v3/prediction?"
 const openWeatherKey = "f214e925612ff5d19b7d84595cd06955";
 const openWeatherURL = "https://api.openweathermap.org/data/2.5/onecall?";
 const iconURL = "http://openweathermap.org/img/wn/";
 
 (() => {
+
+    // Given a place as a string, returns an object containing a corresponding
+    // string corrected for punctuation and capitalization et cetera. I.E 
+    // given "durham nc" or "DURHAM NC", function would return "Durham, NC".
+    function formatPlaceName(place) {
+        return $.ajax({
+            url: predictionURL + $.param({
+                key: mapQuestKey,
+                limit: 1,
+                q: place,
+                collection: "address,adminArea",
+            }),
+            method: "GET",
+        })
+    }
 
     // Given a place as plain text string, returns object containing
     // corresponding latitude and longitude coordinates.  See MapQuest
@@ -97,8 +113,10 @@ const iconURL = "http://openweathermap.org/img/wn/";
             });
         });
     }
-    // Set up local storage history
-    if (localStorage.getItem("history") === null) localStorage.setItem("history", "[]");
+
+    // Set up local storage and display history
+    const history = JSON.parse(localStorage.getItem("history"));
+    if (history === null) localStorage.setItem("history", "[]");
 
     // On form submission, run the queries and display results.
     $("form").submit(() => {
@@ -112,6 +130,5 @@ const iconURL = "http://openweathermap.org/img/wn/";
     });
 
     // localStorage.clear();
-
 
 })();
