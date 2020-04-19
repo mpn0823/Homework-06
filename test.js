@@ -62,6 +62,7 @@ const iconURL = "http://openweathermap.org/img/wn/";
         $("#humidity").text(obj.current.humidity + "%");
         $("#windSpd").text(obj.current.wind_speed + " MPH");
         $("#uvIndex").text(obj.current.uvi);
+        colorUVI(obj.current.uvi);
         //display 5 day forecast
         $("#fiveDay").empty();
         obj.daily.slice(0, 5).forEach((_, i) => {
@@ -114,15 +115,29 @@ const iconURL = "http://openweathermap.org/img/wn/";
         });
     }
 
+    // Color code the UV index value
+    function colorUVI(value) {
+        if (value <= 2.5) $("#uvIndex").attr("style", "background-color: green;");
+        else if (value > 2.5 && value <= 5.5) $("#uvIndex").attr("style", "background-color: gold;"); //yellow
+        else if (value > 5.5 && value <= 7.5) $("#uvIndex").attr("style", "background-color: orange;"); //orange
+        else if (value > 7.5 && value <= 10.5) $("#uvIndex").attr("style", "background-color: red;"); //red
+        else if (value > 10.5) $("#uvIndex").attr("style", "background-color: purple;"); //purple
+    }
     // Set up local storage and display history
     const history = JSON.parse(localStorage.getItem("history"));
     if (history === null) localStorage.setItem("history", "[]");
+    else {
+        getTheWeather(history[0]);
+        colorUVI();
+        updateHistory(history[0]);
+    }
 
     // On form submission, run the queries and display results.
     $("form").submit(() => {
         const place = $("input").val();
         if (place != "") {
             getTheWeather(place);
+            colorUVI();
             updateHistory(place);
         }
         $("input").val(""); //clear input field
@@ -130,5 +145,6 @@ const iconURL = "http://openweathermap.org/img/wn/";
     });
 
     // localStorage.clear();
+
 
 })();
