@@ -1,11 +1,11 @@
 "use strict";
 
 const mapQuestKey = "uAwPs4gZNB3ofJNPyN7Z0k4A3KsXsKAZ";
-const mapQeuestURL = "http://www.mapquestapi.com/geocoding/v1/address?";
-const predictionURL = "http://www.mapquestapi.com/search/v3/prediction?"
+const mapQeuestURL = "https://www.mapquestapi.com/geocoding/v1/address?";
+const predictionURL = "https://www.mapquestapi.com/search/v3/prediction?"
 const openWeatherKey = "f214e925612ff5d19b7d84595cd06955";
 const openWeatherURL = "https://api.openweathermap.org/data/2.5/onecall?";
-const iconURL = "http://openweathermap.org/img/wn/";
+const iconURL = "https://openweathermap.org/img/wn/";
 
 (() => {
 
