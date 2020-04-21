@@ -1,10 +1,10 @@
 "use strict";
 
 const mapQuestKey = "uAwPs4gZNB3ofJNPyN7Z0k4A3KsXsKAZ";
-const mapQeuestURL = "http://www.mapquestapi.com/geocoding/v1/address?";
+const mapQeuestURL = "https://www.mapquestapi.com/geocoding/v1/address?";
 const openWeatherKey = "f214e925612ff5d19b7d84595cd06955";
 const openWeatherURL = "https://api.openweathermap.org/data/2.5/onecall?";
-const iconURL = "http://openweathermap.org/img/wn/";
+const iconURL = "https://openweathermap.org/img/wn/";
 
 // Displays weather data for given place on the page
 function displayWeatherData(place) {
